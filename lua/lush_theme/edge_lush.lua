@@ -367,7 +367,7 @@ local theme = lush(function()
     TSSymbol({ Red }), -- For identifiers referring to symbols or atoms.
     TSType({ Yellow }), -- For types.
     TSTypeBuiltin({ Yellow }), -- For builtin types.
-    TSVariable({ RedItalic }), -- Any variable name that does not have another highlight.
+    TSVariable({ Fg }), -- Any variable name that does not have another highlight.
     TSVariableBuiltin({ CyanItalic }), -- Variable names that are defined by the languages, like `this` or `self`.
 
     TSTag({ RedItalic }), -- Tags like html tag names.
