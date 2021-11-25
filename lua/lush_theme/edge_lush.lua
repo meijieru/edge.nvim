@@ -480,7 +480,7 @@ local theme = lush(function()
     NvimTreeLspDiagnosticsWarning({ YellowSign }),
     NvimTreeMarkdownFile({ Fg }),
     NvimTreeOpenedFile({ Fg }),
-    NvimTreeOpenedFolderName({ Green }),
+    NvimTreeOpenedFolderName({ Green, gui = "bold" }),
     NvimTreeRootFolder({ Grey }),
     NvimTreeSpecialFile({ Fg }),
     NvimTreeSymlink({ Fg }),
