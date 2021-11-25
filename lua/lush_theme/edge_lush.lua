@@ -43,33 +43,7 @@
 --  `:lua require('lush').ify()`
 
 local lush = require("lush")
-local hsl = lush.hsl
-
-local black = hsl("#dde2e7")
-local bg0 = hsl("#fafafa")
-local bg1 = hsl("#eef1f4")
-local bg2 = hsl("#e8ebf0")
-local bg3 = hsl("#e8ebf0")
-local bg4 = hsl("#dde2e7")
-local bg_grey = hsl("#bcc5cf")
-local bg_red = hsl("#e17373")
-local diff_red = hsl("#f6e4e4")
-local bg_green = hsl("#76af6f")
-local diff_green = hsl("#e5eee4")
-local bg_blue = hsl("#6996e0")
-local diff_blue = hsl("#e3eaf6")
-local bg_purple = hsl("#bf75d6")
-local diff_yellow = hsl("#f0ece2")
-local fg = hsl("#4b505b")
-local red = hsl("#d05858")
-local yellow = hsl("#be7e05")
-local green = hsl("#608e32")
-local cyan = hsl("#3a8b84")
-local blue = hsl("#5079be")
-local purple = hsl("#b05ccc")
-local grey = hsl("#8790a0")
-local grey_dim = hsl("#bac3cb")
--- local none = hsl("NONE")
+local palette = require("lush_theme.palette")
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
@@ -88,51 +62,51 @@ local theme = lush(function()
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
 
-    Fg({ fg = fg }),
-    Grey({ fg = grey }),
-    Red({ fg = red }),
-    Yellow({ fg = yellow }),
-    Green({ fg = green }),
-    Cyan({ fg = cyan }),
-    Blue({ fg = blue }),
-    Purple({ fg = purple }),
+    Fg({ fg = palette.fg }),
+    Grey({ fg = palette.grey }),
+    Red({ fg = palette.red }),
+    Yellow({ fg = palette.yellow }),
+    Green({ fg = palette.green }),
+    Cyan({ fg = palette.cyan }),
+    Blue({ fg = palette.blue }),
+    Purple({ fg = palette.purple }),
 
     -- TODO(meijieru): add italic
-    RedItalic({ fg = red }),
-    YellowItalic({ fg = yellow }),
-    GreenItalic({ fg = green }),
-    CyanItalic({ fg = cyan }),
-    BlueItalic({ fg = blue }),
-    PurpleItalic({ fg = purple }),
+    RedItalic({ fg = palette.red }),
+    YellowItalic({ fg = palette.yellow }),
+    GreenItalic({ fg = palette.green }),
+    CyanItalic({ fg = palette.cyan }),
+    BlueItalic({ fg = palette.blue }),
+    PurpleItalic({ fg = palette.purple }),
 
-    RedSign({ fg = red }),
-    YellowSign({ fg = yellow }),
-    GreenSign({ fg = green }),
-    CyanSign({ fg = cyan }),
-    BlueSign({ fg = blue }),
-    PurpleSign({ fg = purple }),
+    RedSign({ fg = palette.red }),
+    YellowSign({ fg = palette.yellow }),
+    GreenSign({ fg = palette.green }),
+    CyanSign({ fg = palette.cyan }),
+    BlueSign({ fg = palette.blue }),
+    PurpleSign({ fg = palette.purple }),
 
     -- TODO: docs {{{
-    Terminal({ bg = bg0, fg = fg }),
-    ToolbarLine({ bg = bg2, fg = fg }),
-    ToolbarButton({ bg = bg_purple, fg = bg0 }),
-    debugBreakpoint({ bg = bg_red, fg = bg0 }),
-    debugPC({ bg = bg_green, fg = bg0 }),
-    StatusLineTerm({ bg = bg2, fg = fg }),
-    StatusLineTermNC({ bg = bg1, fg = grey }),
-    Float({ fg = green }),
+    Terminal({ bg = palette.bg0, fg = palette.fg }),
+    ToolbarLine({ bg = palette.bg2, fg = palette.fg }),
+    ToolbarButton({ bg = palette.bg_purple, fg = palette.bg0 }),
+    debugBreakpoint({ bg = palette.bg_red, fg = palette.bg0 }),
+    debugPC({ bg = palette.bg_green, fg = palette.bg0 }),
+    StatusLineTerm({ bg = palette.bg2, fg = palette.fg }),
+    StatusLineTermNC({ bg = palette.bg1, fg = palette.grey }),
+    Float({ fg = palette.green }),
 
-    WarningFloat({ bg = bg2, fg = yellow }),
-    ErrorFloat({ bg = bg2, fg = red }),
-    InfoFloat({ bg = bg2, fg = blue }),
-    HintFloat({ bg = bg2, fg = green }),
+    WarningFloat({ bg = palette.bg2, fg = palette.yellow }),
+    ErrorFloat({ bg = palette.bg2, fg = palette.red }),
+    InfoFloat({ bg = palette.bg2, fg = palette.blue }),
+    HintFloat({ bg = palette.bg2, fg = palette.green }),
 
-    CurrentWord({ bg = bg2 }),
+    CurrentWord({ bg = palette.bg2 }),
 
-    ErrorText({ sp = red, gui = "undercurl" }),
-    WarningText({ sp = yellow, gui = "undercurl" }),
-    InfoText({ sp = blue, gui = "undercurl" }),
-    HintText({ sp = green, gui = "undercurl" }),
+    ErrorText({ sp = palette.red, gui = "undercurl" }),
+    WarningText({ sp = palette.yellow, gui = "undercurl" }),
+    InfoText({ sp = palette.blue, gui = "undercurl" }),
+    HintText({ sp = palette.green, gui = "undercurl" }),
 
     VirtualTextWarning({ Yellow }),
     VirtualTextError({ Red }),
@@ -164,65 +138,65 @@ local theme = lush(function()
     healthWarning({ Yellow }),
     -- }}} docs
 
-    Comment({ gui = "italic", fg = grey }), -- any comment
-    ColorColumn({ bg = bg1 }), -- used for the columns set with 'colorcolumn'
-    Conceal({ fg = grey_dim }), -- placeholder characters substituted for concealed text (see 'conceallevel')
+    Comment({ gui = "italic", fg = palette.grey }), -- any comment
+    ColorColumn({ bg = palette.bg1 }), -- used for the columns set with 'colorcolumn'
+    Conceal({ fg = palette.grey_dim }), -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor({ gui = "reverse" }), -- character under the cursor
     vCursor({ Cursor }), -- TODO: docs
     iCursor({ Cursor }), -- TODO: docs
     lCursor({ Cursor }), -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM({ Cursor }), -- like Cursor, but used when in IME mode |CursorIM|
-    CursorColumn({ bg = bg1 }), -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    CursorLine({ bg = bg1 }), -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorColumn({ bg = palette.bg1 }), -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    CursorLine({ bg = palette.bg1 }), -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
 
-    Directory({ fg = green }), -- directory names (and other special names in listings)
-    DiffAdd({ bg = diff_green }), -- diff mode: Added line |diff.txt|
-    DiffChange({ bg = diff_blue }), -- diff mode: Changed line |diff.txt|
-    DiffDelete({ bg = diff_red }), -- diff mode: Deleted line |diff.txt|
-    DiffText({ bg = blue, fg = bg0 }), -- diff mode: Changed text within a changed line |diff.txt|
-    EndOfBuffer({ bg = bg0, fg = bg4 }), -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
+    Directory({ fg = palette.green }), -- directory names (and other special names in listings)
+    DiffAdd({ bg = palette.diff_green }), -- diff mode: Added line |diff.txt|
+    DiffChange({ bg = palette.diff_blue }), -- diff mode: Changed line |diff.txt|
+    DiffDelete({ bg = palette.diff_red }), -- diff mode: Deleted line |diff.txt|
+    DiffText({ bg = palette.blue, fg = palette.bg0 }), -- diff mode: Changed text within a changed line |diff.txt|
+    EndOfBuffer({ bg = palette.bg0, fg = palette.bg4 }), -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     TermCursor({ Cursor }), -- cursor in a focused terminal
     -- TermCursorNC { }, -- TODO(meijieru): cursor in an unfocused terminal
-    ErrorMsg({ gui = "bold,underline", fg = red }), -- error messages on the command line
-    VertSplit({ fg = black }), -- the column separating vertically split windows
-    Folded({ bg = bg1, fg = grey }), -- line used for closed folds
-    FoldColumn({ fg = grey_dim }), -- 'foldcolumn'
-    SignColumn({ fg = fg }), -- column where |signs| are displayed
-    IncSearch({ bg = bg_blue, fg = bg0 }), -- 'incsearch' highlighting, also used for the text replaced with ":s///c"
-    Substitute({ bg = yellow, fg = bg0 }), -- |:substitute| replacement text highlighting
-    LineNr({ fg = grey_dim }), -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    CursorLineNr({ fg = grey }), -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    MatchParen({ bg = bg4 }), -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-    ModeMsg({ gui = "bold", fg = fg }), -- 'showmode' message (e.g., "-- INSERT -- ")
+    ErrorMsg({ gui = "bold,underline", fg = palette.red }), -- error messages on the command line
+    VertSplit({ fg = palette.black }), -- the column separating vertically split windows
+    Folded({ bg = palette.bg1, fg = palette.grey }), -- line used for closed folds
+    FoldColumn({ fg = palette.grey_dim }), -- 'foldcolumn'
+    SignColumn({ fg = palette.fg }), -- column where |signs| are displayed
+    IncSearch({ bg = palette.bg_blue, fg = palette.bg0 }), -- 'incsearch' highlighting, also used for the text replaced with ":s///c"
+    Substitute({ bg = palette.yellow, fg = palette.bg0 }), -- |:substitute| replacement text highlighting
+    LineNr({ fg = palette.grey_dim }), -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLineNr({ fg = palette.grey }), -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    MatchParen({ bg = palette.bg4 }), -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    ModeMsg({ gui = "bold", fg = palette.fg }), -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea      { }, -- TODO(meijieru): Area for messages and cmdline
     -- MsgSeparator({ StatusLine }), -- TODO(meijieru): Separator for scrolled messages, `msgsep` flag of 'display'
-    MoreMsg({ gui = "bold", fg = blue }), -- |more-prompt|
-    NonText({ fg = bg4 }), -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    Normal({ bg = bg0, fg = fg }), -- normal text
-    NormalFloat({ bg = bg2, fg = fg }), -- Normal text in floating windows.
+    MoreMsg({ gui = "bold", fg = palette.blue }), -- |more-prompt|
+    NonText({ fg = palette.bg4 }), -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Normal({ bg = palette.bg0, fg = palette.fg }), -- normal text
+    NormalFloat({ bg = palette.bg2, fg = palette.fg }), -- Normal text in floating windows.
     -- NormalNC     { }, -- TODO(meijieru): normal text in non-current windows
-    Pmenu({ bg = bg2, fg = fg }), -- Popup menu: normal item.
-    PmenuSel({ bg = bg_blue, fg = bg0 }), -- Popup menu: selected item.
-    PmenuSbar({ bg = bg2 }), -- Popup menu: scrollbar.
-    PmenuThumb({ bg = bg_grey }), -- Popup menu: Thumb of the scrollbar.
-    Question({ fg = yellow }), -- |hit-enter| prompt and yes/no questions
-    QuickFixLine({ gui = "bold", fg = purple }), -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search({ bg = bg_green, fg = bg0 }), -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-    SpecialKey({ fg = bg4 }), -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    SpellBad({ sp = red, gui = "undercurl" }), -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-    SpellCap({ sp = yellow, gui = "undercurl" }), -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-    SpellLocal({ sp = blue, gui = "undercurl" }), -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-    SpellRare({ sp = purple, gui = "undercurl" }), -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-    StatusLine({ bg = bg2, fg = fg }), -- status line of current window
-    StatusLineNC({ bg = bg1, fg = grey }), -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-    TabLine({ bg = bg4, fg = fg }), -- tab pages line, not active tab page label
-    TabLineFill({ bg = bg1, fg = grey }), -- tab pages line, where there are no labels
-    TabLineSel({ bg = bg_purple, fg = bg0 }), -- tab pages line, active tab page label
-    Title({ gui = "bold", fg = purple }), -- titles for output from ":set all", ":autocmd" etc.
-    Visual({ bg = bg3 }), -- Visual mode selection
-    VisualNOS({ bg = bg3, gui = "underline" }), -- Visual mode selection when vim is "Not Owning the Selection".
-    WarningMsg({ gui = "bold", fg = yellow }), -- warning messages
-    Whitespace({ fg = bg4 }), -- "nbsp", "space", "tab" and "trail" in 'listchars'
+    Pmenu({ bg = palette.bg2, fg = palette.fg }), -- Popup menu: normal item.
+    PmenuSel({ bg = palette.bg_blue, fg = palette.bg0 }), -- Popup menu: selected item.
+    PmenuSbar({ bg = palette.bg2 }), -- Popup menu: scrollbar.
+    PmenuThumb({ bg = palette.bg_grey }), -- Popup menu: Thumb of the scrollbar.
+    Question({ fg = palette.yellow }), -- |hit-enter| prompt and yes/no questions
+    QuickFixLine({ gui = "bold", fg = palette.purple }), -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    Search({ bg = palette.bg_green, fg = palette.bg0 }), -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    SpecialKey({ fg = palette.bg4 }), -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+    SpellBad({ sp = palette.red, gui = "undercurl" }), -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+    SpellCap({ sp = palette.yellow, gui = "undercurl" }), -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+    SpellLocal({ sp = palette.blue, gui = "undercurl" }), -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+    SpellRare({ sp = palette.purple, gui = "undercurl" }), -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+    StatusLine({ bg = palette.bg2, fg = palette.fg }), -- status line of current window
+    StatusLineNC({ bg = palette.bg1, fg = palette.grey }), -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    TabLine({ bg = palette.bg4, fg = palette.fg }), -- tab pages line, not active tab page label
+    TabLineFill({ bg = palette.bg1, fg = palette.grey }), -- tab pages line, where there are no labels
+    TabLineSel({ bg = palette.bg_purple, fg = palette.bg0 }), -- tab pages line, active tab page label
+    Title({ gui = "bold", fg = palette.purple }), -- titles for output from ":set all", ":autocmd" etc.
+    Visual({ bg = palette.bg3 }), -- Visual mode selection
+    VisualNOS({ bg = palette.bg3, gui = "underline" }), -- Visual mode selection when vim is "Not Owning the Selection".
+    WarningMsg({ gui = "bold", fg = palette.yellow }), -- warning messages
+    Whitespace({ fg = palette.bg4 }), -- "nbsp", "space", "tab" and "trail" in 'listchars'
     WildMenu({ PmenuSel }), -- current match in 'wildmenu' completion
 
     -- These groups are not listed as default vim groups,
@@ -231,50 +205,50 @@ local theme = lush(function()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Constant({ fg = yellow }), -- (preferred) any constant
-    String({ fg = green }), --   a string constant: "this is a string"
-    Character({ fg = green }), --  a character constant: 'c', '\n'
-    Number({ fg = green }), --   a number constant: 234, 0xff
-    Boolean({ fg = green }), --  a boolean constant: TRUE, false
+    Constant({ fg = palette.yellow }), -- (preferred) any constant
+    String({ fg = palette.green }), --   a string constant: "this is a string"
+    Character({ fg = palette.green }), --  a character constant: 'c', '\n'
+    Number({ fg = palette.green }), --   a number constant: 234, 0xff
+    Boolean({ fg = palette.green }), --  a boolean constant: TRUE, false
     FloatingError({ ErrorFloat }), --    a floating point constant: 2.3e10
 
-    Identifier({ fg = cyan }), -- (preferred) any variable name
-    Function({ fg = blue }), -- function name (also: methods for classes)
+    Identifier({ fg = palette.cyan }), -- (preferred) any variable name
+    Function({ fg = palette.blue }), -- function name (also: methods for classes)
 
-    Statement({ fg = purple }), -- (preferred) any statement
-    Conditional({ fg = purple }), --  if, then, else, endif, switch, etc.
-    Repeat({ fg = purple }), --   for, do, while, etc.
-    Label({ fg = yellow }), --    case, default, etc.
-    Operator({ fg = purple }), -- "sizeof", "+", "*", etc.
-    Keyword({ fg = purple }), --  any other keyword
-    Exception({ fg = purple }), --  try, catch, throw
+    Statement({ fg = palette.purple }), -- (preferred) any statement
+    Conditional({ fg = palette.purple }), --  if, then, else, endif, switch, etc.
+    Repeat({ fg = palette.purple }), --   for, do, while, etc.
+    Label({ fg = palette.yellow }), --    case, default, etc.
+    Operator({ fg = palette.purple }), -- "sizeof", "+", "*", etc.
+    Keyword({ fg = palette.purple }), --  any other keyword
+    Exception({ fg = palette.purple }), --  try, catch, throw
 
-    PreProc({ fg = purple }), -- (preferred) generic Preprocessor
-    Include({ fg = purple }), --  preprocessor #include
-    Define({ fg = purple }), --   preprocessor #define
-    Macro({ fg = yellow }), --    same as Define
-    PreCondit({ fg = purple }), --  preprocessor #if, #else, #endif, etc.
+    PreProc({ fg = palette.purple }), -- (preferred) generic Preprocessor
+    Include({ fg = palette.purple }), --  preprocessor #include
+    Define({ fg = palette.purple }), --   preprocessor #define
+    Macro({ fg = palette.yellow }), --    same as Define
+    PreCondit({ fg = palette.purple }), --  preprocessor #if, #else, #endif, etc.
 
-    Type({ fg = red }), -- (preferred) int, long, char, etc.
-    StorageClass({ fg = red }), -- static, register, volatile, etc.
-    Structure({ fg = red }), --  struct, union, enum, etc.
-    Typedef({ fg = purple }), --  A typedef
+    Type({ fg = palette.red }), -- (preferred) int, long, char, etc.
+    StorageClass({ fg = palette.red }), -- static, register, volatile, etc.
+    Structure({ fg = palette.red }), --  struct, union, enum, etc.
+    Typedef({ fg = palette.purple }), --  A typedef
 
-    Special({ fg = yellow }), -- (preferred) any special symbol
-    SpecialChar({ fg = yellow }), --  special character in a constant
-    Tag({ fg = yellow }), --    you can use CTRL-] on this
-    Delimiter({ fg = fg }), --  character that needs attention
-    SpecialComment({ gui = "italic", fg = grey }), -- special things inside a comment
-    Debug({ fg = yellow }), --    debugging statements
+    Special({ fg = palette.yellow }), -- (preferred) any special symbol
+    SpecialChar({ fg = palette.yellow }), --  special character in a constant
+    Tag({ fg = palette.yellow }), --    you can use CTRL-] on this
+    Delimiter({ fg = palette.fg }), --  character that needs attention
+    SpecialComment({ gui = "italic", fg = palette.grey }), -- special things inside a comment
+    Debug({ fg = palette.yellow }), --    debugging statements
 
     Underlined({ gui = "underline" }), -- (preferred) text that stands out, HTML links
     Bold({ gui = "bold" }),
     Italic({ gui = "italic" }),
 
     -- ("Ignore", below, may be invisible...)
-    Ignore({ fg = grey }), -- (preferred) left blank, hidden  |hl-Ignore|
-    Error({ fg = purple }), -- (preferred) any erroneous construct
-    Todo({ gui = "italic", fg = red }), -- (preferred) anything that needs extra attention, mostly the keywords TODO FIXME and XXX
+    Ignore({ fg = palette.grey }), -- (preferred) left blank, hidden  |hl-Ignore|
+    Error({ fg = palette.purple }), -- (preferred) any erroneous construct
+    Todo({ gui = "italic", fg = palette.red }), -- (preferred) anything that needs extra attention, mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own. Consult your LSP client's
@@ -318,9 +292,9 @@ local theme = lush(function()
     -- you explicitly want to support Treesitter's improved syntax awareness.
 
     -- TODO: docs {{{
-    TSWarning({ bg = yellow, gui = "bold", fg = bg0 }),
-    TSDanger({ bg = red, gui = "bold", fg = bg0 }),
-    TSNote({ bg = blue, gui = "bold", fg = bg0 }),
+    TSWarning({ bg = palette.yellow, gui = "bold", fg = palette.bg0 }),
+    TSDanger({ bg = palette.red, gui = "bold", fg = palette.bg0 }),
+    TSNote({ bg = palette.blue, gui = "bold", fg = palette.bg0 }),
     TSStrong({ gui = "bold" }),
 
     TSMath({ Green }),
@@ -378,7 +352,7 @@ local theme = lush(function()
     TSStrike({ Grey }), -- For strikethrough text.
     TSTitle({ Title }), -- Text that is part of a title.
     TSLiteral({ String }), -- Literal text.
-    TSURI({ gui = "underline", fg = green }), -- Any URI like a link or email.
+    TSURI({ gui = "underline", fg = palette.green }), -- Any URI like a link or email.
 
     -- Plugins
 
@@ -405,14 +379,14 @@ local theme = lush(function()
     -- hrsh7th/nvim-cmp
     CmpItemAbbr({ Fg }),
     CmpItemAbbrDeprecated({ Fg }),
-    CmpItemAbbrMatch({ gui = "bold", fg = blue }),
-    CmpItemAbbrMatchFuzzy({ gui = "bold", fg = blue }),
+    CmpItemAbbrMatch({ gui = "bold", fg = palette.blue }),
+    CmpItemAbbrMatchFuzzy({ gui = "bold", fg = palette.blue }),
     CmpItemKind({ Purple }),
     CmpItemMenu({ Fg }),
 
     -- phaazon/hop.nvim
-    HopNextKey({ gui = "bold", fg = purple }),
-    HopNextKey1({ gui = "bold", fg = blue }),
+    HopNextKey({ gui = "bold", fg = palette.purple }),
+    HopNextKey1({ gui = "bold", fg = palette.blue }),
     HopNextKey2({ Blue }),
     HopUnmatched({ Grey }),
 
@@ -451,7 +425,7 @@ local theme = lush(function()
     NotifyWARNTitle({ Yellow }),
 
     -- nvim-telescope/telescope.nvim
-    TelescopeMatching({ gui = "bold", fg = green }),
+    TelescopeMatching({ gui = "bold", fg = palette.green }),
     TelescopeBorder({ Grey }),
     TelescopePromptPrefix({ Purple }),
     TelescopeSelection({ DiffAdd }),
@@ -486,7 +460,7 @@ local theme = lush(function()
     NvimTreeSymlink({ Fg }),
 
     -- mbbill/undotree
-    UndotreeSavedBig({ gui = "bold", fg = red }),
+    UndotreeSavedBig({ gui = "bold", fg = palette.red }),
     UndotreeNode({ Blue }),
     UndotreeNodeCurrent({ Purple }),
     UndotreeSeq({ Green }),
@@ -545,7 +519,7 @@ local theme = lush(function()
     -- gabrielelana/vim-markdown
     mkdURL({ TSURI }),
     mkdInlineURL({ TSURI }),
-    mkdItalic({ gui = "italic", fg = grey }),
+    mkdItalic({ gui = "italic", fg = palette.grey }),
     mkdCodeDelimiter({ Green }),
     mkdCode({ Green }),
     mkdBold({ Grey }),
