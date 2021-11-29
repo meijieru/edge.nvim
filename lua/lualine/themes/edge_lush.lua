@@ -1,17 +1,9 @@
 -- Modified from https://github.com/sainnhe/edge/blob/master/lua/lualine/themes/edge.lua
 
-local function map(tbl, f)
-  local t = {}
-  for k, v in pairs(tbl) do
-    t[k] = f(v)
-  end
-  return t
-end
-
 local palette = require("lush_theme.palette")
-palette = map(palette, function(hsl)
+palette = vim.tbl_map(function(hsl)
   return tostring(hsl):lower()
-end)
+end, palette)
 
 return {
   normal = {
