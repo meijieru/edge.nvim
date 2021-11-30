@@ -108,10 +108,10 @@ local theme = lush(function()
     InfoText({ sp = palette.blue, gui = "undercurl" }),
     HintText({ sp = palette.green, gui = "undercurl" }),
 
-    VirtualTextWarning({ Yellow }),
-    VirtualTextError({ Red }),
-    VirtualTextInfo({ Blue }),
-    VirtualTextHint({ Green }),
+    VirtualTextWarning({  fg = palette.diff_yellow.darken(35)  }),
+    VirtualTextError({ fg = palette.red.lighten(25) }),
+    VirtualTextInfo({ fg = palette.blue.lighten(25) }),
+    VirtualTextHint({ fg = palette.green.lighten(25) }),
 
     DiagnosticFloatingError({ ErrorFloat }),
     DiagnosticFloatingWarn({ WarningFloat }),
