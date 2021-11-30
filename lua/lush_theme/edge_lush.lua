@@ -71,13 +71,12 @@ local theme = lush(function()
     Blue({ fg = palette.blue }),
     Purple({ fg = palette.purple }),
 
-    -- TODO(meijieru): add italic
-    RedItalic({ fg = palette.red }),
-    YellowItalic({ fg = palette.yellow }),
-    GreenItalic({ fg = palette.green }),
-    CyanItalic({ fg = palette.cyan }),
-    BlueItalic({ fg = palette.blue }),
-    PurpleItalic({ fg = palette.purple }),
+    RedItalic({ gui = "italic", fg = palette.red }),
+    YellowItalic({ gui = "italic", fg = palette.yellow }),
+    GreenItalic({ gui = "italic", fg = palette.green }),
+    CyanItalic({ gui = "italic", fg = palette.cyan }),
+    BlueItalic({ gui = "italic", fg = palette.blue }),
+    PurpleItalic({ gui = "italic", fg = palette.purple }),
 
     RedSign({ fg = palette.red }),
     YellowSign({ fg = palette.yellow }),
@@ -340,7 +339,7 @@ local theme = lush(function()
     TSStringEscape({ Yellow }), -- For escape characters within a string.
     TSSymbol({ Red }), -- For identifiers referring to symbols or atoms.
     TSType({ Yellow }), -- For types.
-    TSTypeBuiltin({ Yellow }), -- For builtin types.
+    TSTypeBuiltin({ YellowItalic }), -- For builtin types.
     TSVariable({ Fg }), -- Any variable name that does not have another highlight.
     TSVariableBuiltin({ CyanItalic }), -- Variable names that are defined by the languages, like `this` or `self`.
 
