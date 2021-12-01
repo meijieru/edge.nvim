@@ -81,6 +81,27 @@ vim.g.terminal_color_15 = terminal.white.hex
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
 ---@diagnostic disable: undefined-global
+local diff_group
+if vim.o.diff then
+  diff_group = lush(function()
+    return {
+      CursorColumn({ gui = "bold" }), -- Screen-column at the cursor, when 'cursorcolumn' is set.
+      CursorLine({ gui = "underline" }), -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+      CursorLineNr({ gui = "underline", fg = palette.grey }), -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+      CurrentWord({ bg = palette.green, fg = palette.bg0 }),
+    }
+  end)
+else
+  diff_group = lush(function()
+    return {
+      CursorColumn({ bg = palette.bg1 }), -- Screen-column at the cursor, when 'cursorcolumn' is set.
+      CursorLine({ bg = palette.bg1 }), -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+      CursorLineNr({ fg = palette.grey }), -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+      CurrentWord({ bg = palette.bg2 }),
+    }
+  end)
+end
+
 local base_group = lush(function()
   return {
     -- The following are all the Neovim default highlight groups from the docs
@@ -133,8 +154,6 @@ local base_group = lush(function()
     InfoFloat({ bg = palette.bg2, fg = palette.blue }),
     HintFloat({ bg = palette.bg2, fg = palette.green }),
 
-    CurrentWord({ bg = palette.bg2 }),
-
     ErrorText({ sp = palette.red, gui = "undercurl" }),
     WarningText({ sp = palette.yellow, gui = "undercurl" }),
     InfoText({ sp = palette.blue, gui = "undercurl" }),
@@ -178,8 +197,6 @@ local base_group = lush(function()
     iCursor({ Cursor }), -- TODO: docs
     lCursor({ Cursor }), -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM({ Cursor }), -- like Cursor, but used when in IME mode |CursorIM|
-    CursorColumn({ bg = palette.bg1 }), -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    CursorLine({ bg = palette.bg1 }), -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
 
     Directory({ fg = palette.green }), -- directory names (and other special names in listings)
     DiffAdd({ bg = palette.diff_green }), -- diff mode: Added line |diff.txt|
@@ -197,7 +214,6 @@ local base_group = lush(function()
     IncSearch({ bg = palette.bg_blue, fg = palette.bg0 }), -- 'incsearch' highlighting, also used for the text replaced with ":s///c"
     Substitute({ bg = palette.yellow, fg = palette.bg0 }), -- |:substitute| replacement text highlighting
     LineNr({ fg = palette.grey_dim }), -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    CursorLineNr({ fg = palette.grey }), -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     MatchParen({ bg = palette.bg4 }), -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg({ gui = "bold", fg = palette.fg }), -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea      { }, -- TODO(meijieru): Area for messages and cmdline
@@ -286,9 +302,9 @@ local base_group = lush(function()
     -- use these groups, or use their own. Consult your LSP client's
     -- documentation.
 
-    LspReferenceText({ CurrentWord }), -- used for highlighting "text" references
-    LspReferenceRead({ CurrentWord }), -- used for highlighting "read" references
-    LspReferenceWrite({ CurrentWord }), -- used for highlighting "write" references
+    LspReferenceText({ diff_group.CurrentWord }), -- used for highlighting "text" references
+    LspReferenceRead({ diff_group.CurrentWord }), -- used for highlighting "read" references
+    LspReferenceWrite({ diff_group.CurrentWord }), -- used for highlighting "write" references
 
     LspDiagnosticsDefaultError({ ErrorText }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     LspDiagnosticsDefaultWarning({ WarningText }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
@@ -389,6 +405,6 @@ local base_group = lush(function()
 end)
 
 -- return our parsed theme for extension or use else where.
-return base_group
+return lush.merge({ base_group, diff_group })
 
 -- vi:nowrap
