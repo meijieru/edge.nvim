@@ -45,6 +45,39 @@
 local lush = require("lush")
 local palette = require("edge_lush.palette")
 
+local terminal = {
+  ["red"] = palette.red,
+  ["yellow"] = palette.yellow,
+  ["green"] = palette.green,
+  ["cyan"] = palette.cyan,
+  ["blue"] = palette.blue,
+  ["purple"] = palette.purple,
+}
+if vim.o.background == "dark" then
+  terminal["black"] = palette.bg0
+  terminal["white"] = palette.fg
+else
+  terminal["black"] = palette.fg
+  terminal["white"] = palette.bg0
+end
+
+vim.g.terminal_color_0 = terminal.black.hex
+vim.g.terminal_color_1 = terminal.red.hex
+vim.g.terminal_color_2 = terminal.green.hex
+vim.g.terminal_color_3 = terminal.yellow.hex
+vim.g.terminal_color_4 = terminal.blue.hex
+vim.g.terminal_color_5 = terminal.purple.hex
+vim.g.terminal_color_6 = terminal.cyan.hex
+vim.g.terminal_color_7 = terminal.white.hex
+vim.g.terminal_color_8 = terminal.black.hex
+vim.g.terminal_color_9 = terminal.red.hex
+vim.g.terminal_color_10 = terminal.green.hex
+vim.g.terminal_color_11 = terminal.yellow.hex
+vim.g.terminal_color_12 = terminal.blue.hex
+vim.g.terminal_color_13 = terminal.purple.hex
+vim.g.terminal_color_14 = terminal.cyan.hex
+vim.g.terminal_color_15 = terminal.white.hex
+
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
 ---@diagnostic disable: undefined-global
