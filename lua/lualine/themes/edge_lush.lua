@@ -1,6 +1,6 @@
 -- Modified from https://github.com/sainnhe/edge/blob/master/lua/lualine/themes/edge.lua
 
-local palette = require("lush_theme.palette")
+local palette = require("edge_lush.palette")
 palette = vim.tbl_map(function(hsl)
   return tostring(hsl):lower()
 end, palette)
