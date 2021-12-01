@@ -329,7 +329,7 @@ local base_group = lush(function()
     TSOperator({ Purple }), -- For any operator: `+`, but also `->` and `*` in C.
     TSParameter({ RedItalic }), -- For parameters of a function.
     TSParameterReference({ RedItalic }), -- For references to parameters of a function.
-    TSProperty({ Blue }), -- Same as `TSField`.
+    TSProperty({ RedItalic }), -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1913
     TSPunctDelimiter({ Grey }), -- For delimiters ie: `.`
     TSPunctBracket({ Grey }), -- For brackets and parens.
     TSPunctSpecial({ Yellow }), -- For special punctutation that does not fall in the catagories before.
