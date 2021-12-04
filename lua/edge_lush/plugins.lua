@@ -202,6 +202,9 @@ local plugins = lush(function()
     mkdRule({ base.Yellow }),
     mkdDelimiter({ base.Grey }),
     mkdId({ base.Green }),
+
+    -- ray-x/lsp_signature.nvim
+    LspSignatureActiveParameter({ base.TSStrong }),
   }
 end)
 
