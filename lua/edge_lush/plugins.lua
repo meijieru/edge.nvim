@@ -205,6 +205,27 @@ local plugins = lush(function()
 
     -- ray-x/lsp_signature.nvim
     LspSignatureActiveParameter({ base.TSStrong }),
+
+    -- rcarriga/nvim-dap-ui
+    DapUIVariable({ base.Normal }),
+    DapUIScope({ base.Blue }),
+    DapUIType({ base.Purple }),
+    DapUIValue({ base.Normal }),
+    DapUIModifiedValue({ base.Red, gui = "bold" }),
+    DapUIDecoration({ base.Blue }),
+    DapUIThread({ base.Green }),
+    DapUIStoppedThread({ base.Blue }),
+    DapUIFrameName({ base.Normal }),
+    DapUISource({ base.Purple }),
+    DapUILineNumber({ base.Blue }),
+    DapUIFloatBorder({ base.Blue }),
+    DapUIWatchesEmpty({ base.Red }),
+    DapUIWatchesValue({ base.Green }),
+    DapUIWatchesError({ base.Red }),
+    DapUIBreakpointsPath({ base.Blue }),
+    DapUIBreakpointsInfo({ base.Green }),
+    DapUIBreakpointsCurrentLine({ base.Green, gui = "bold" }),
+    DapUIBreakpointsLine({ DapUILineNumber }),
   }
 end)
 
