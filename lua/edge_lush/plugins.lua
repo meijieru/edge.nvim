@@ -226,6 +226,9 @@ local plugins = lush(function()
     DapUIBreakpointsInfo({ base.Green }),
     DapUIBreakpointsCurrentLine({ base.Green, gui = "bold" }),
     DapUIBreakpointsLine({ DapUILineNumber }),
+
+    -- simrat39/symbols-outline.nvim
+    FocusedSymbol({ base.Green, gui = "bold" }),
   }
 end)
 
