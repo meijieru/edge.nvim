@@ -229,6 +229,15 @@ local plugins = lush(function()
 
     -- simrat39/symbols-outline.nvim
     FocusedSymbol({ base.Green, gui = "bold" }),
+
+    -- stevearc/aerial.nvim
+    AerialClassIcon({ base.TSType }),
+    AerialConstructorIcon({ base.TSConstructor }),
+    AerialFunctionIcon({ base.TSFunction }),
+    AerialEnumIcon({ base.TSConstant }),
+    AerialInterfaceIcon({ base.TSInterface }),
+    AerialMethodIcon({ base.TSMethod }),
+    AerialStructIcon({ base.TSType }),
   }
 end)
 
