@@ -238,6 +238,9 @@ local plugins = lush(function()
     AerialInterfaceIcon({ base.TSInterface }),
     AerialMethodIcon({ base.TSMethod }),
     AerialStructIcon({ base.TSType }),
+
+    -- MTDL9/vim-log-highlighting
+    logBrackets({ base.TSPunctBracket }),
   }
 end)
 
