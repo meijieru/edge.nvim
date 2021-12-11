@@ -6,6 +6,7 @@ if background == nil then
   background = "dark"
   vim.o.background = background
 end
+vim.o.termguicolors = true
 
 local palette
 if background == "dark" then
