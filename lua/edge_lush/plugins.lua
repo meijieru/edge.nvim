@@ -227,6 +227,10 @@ local plugins = lush(function()
     DapUIBreakpointsCurrentLine({ base.Green, gui = "bold" }),
     DapUIBreakpointsLine({ DapUILineNumber }),
 
+    -- theHamsta/nvim-dap-virtual-text
+    NvimDapVirtualTextChanged({ DapUIModifiedValue }),
+    -- NvimDapVirtualText({ DapUIVariable }),
+
     -- simrat39/symbols-outline.nvim
     FocusedSymbol({ base.Green, gui = "bold" }),
 
