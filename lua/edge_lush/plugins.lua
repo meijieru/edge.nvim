@@ -72,8 +72,14 @@ local plugins = lush(function()
     -- lewis6991/gitsigns.nvim
     GitSignsAdd({ base.GreenSign }),
     GitSignsChange({ base.BlueSign }),
-    GitSignsChangeDelete({ base.PurpleSign }),
     GitSignsDelete({ base.RedSign }),
+    GitSignsAddNr({ base.Green }),
+    GitSignsChangeNr({ base.Blue }),
+    GitSignsDeleteNr({ base.Red }),
+    GitSignsAddLn({ base.DiffAdd }),
+    GitSignsChangeLn({ base.DiffChange }),
+    GitSignsDeleteLn({ base.DiffDelete }),
+    GitSignsCurrentLineBlame({ base.Grey }),
 
     -- andymass/vim-matchup
     MatchParenCur({ gui = "bold" }),
