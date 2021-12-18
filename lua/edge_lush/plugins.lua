@@ -251,6 +251,9 @@ local plugins = lush(function()
 
     -- MTDL9/vim-log-highlighting
     logBrackets({ base.TSPunctBracket }),
+
+    -- stevearc/dressing.nvim
+    FloatTitle({ base.Normal }),
   }
 end)
 
