@@ -254,6 +254,7 @@ local plugins = lush(function()
 
     -- stevearc/dressing.nvim
     FloatTitle({ base.Normal }),
+    DressingInputText({ base.Normal }),
   }
 end)
 
