@@ -255,6 +255,12 @@ local plugins = lush(function()
     -- stevearc/dressing.nvim
     FloatTitle({ base.Normal }),
     DressingInputText({ base.Normal }),
+
+    -- glepnir/dashboard-nvim
+    DashboardHeader({ base.Purple }),
+    DashboardCenter({ base.Green }),
+    DashboardShortcut({ base.Blue }),
+    DashboardFooter({ base.Red }),
   }
 end)
 
