@@ -210,6 +210,7 @@ local base_group = lush(function()
     -- TermCursorNC { }, -- TODO(meijieru): cursor in an unfocused terminal
     ErrorMsg({ gui = "bold,underline", fg = palette.red }), -- error messages on the command line
     VertSplit({ fg = palette.black }), -- the column separating vertically split windows
+    WinSeparator({ VertSplit }), -- separators between window splits
     Folded({ bg = palette.bg1, fg = palette.grey }), -- line used for closed folds
     FoldColumn({ fg = palette.grey_dim }), -- 'foldcolumn'
     SignColumn({ fg = palette.fg }), -- column where |signs| are displayed
