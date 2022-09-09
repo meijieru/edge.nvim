@@ -257,6 +257,23 @@ local plugins = lush(function()
     DashboardCenter({ base.Green }),
     DashboardShortcut({ base.Blue }),
     DashboardFooter({ base.Red }),
+
+    -- wbthomason/packer.nvim
+    packerSuccess({ base.Green }),
+    packerFail({ base.Red }),
+    packerStatusSuccess({ base.Fg }),
+    packerStatusFail({ base.Fg }),
+    packerWorking({ base.Blue }),
+    packerString({ base.Yellow }),
+    packerPackageNotLoaded({ base.Grey }),
+    packerRelDate({ base.Grey }),
+    packerPackageName({ base.Green }),
+    packerOutput({ base.Purple }),
+    packerHash({ base.Blue }),
+    packerTimeTrivial({ base.Blue }),
+    packerTimeHigh({ base.Red }),
+    packerTimeMedium({ base.Yellow }),
+    packerTimeLow({ base.Green }),
   }
 end)
 
