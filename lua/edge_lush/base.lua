@@ -306,6 +306,9 @@ local base_group = lush(function()
     LspReferenceText({ diff_group.CurrentWord }), -- used for highlighting "text" references
     LspReferenceRead({ diff_group.CurrentWord }), -- used for highlighting "read" references
     LspReferenceWrite({ diff_group.CurrentWord }), -- used for highlighting "write" references
+    LspCodeLens({ VirtualTextInfo }),
+    LspCodeLensSeparator({ VirtualTextHint }),
+    LspSignatureActiveParameter({ Search }),
 
     LspDiagnosticsDefaultError({ ErrorText }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     LspDiagnosticsDefaultWarning({ WarningText }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
