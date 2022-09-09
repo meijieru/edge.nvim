@@ -29,7 +29,7 @@ local plugins = lush(function()
     CmpItemAbbrMatch({ base.Blue, gui = "bold" }),
     CmpItemAbbrMatchFuzzy({ base.Blue, gui = "bold" }),
     CmpItemAbbr({ base.Fg }),
-    CmpItemAbbrDeprecated({ base.Fg }),
+    CmpItemAbbrDeprecated({ base.Grey }),
     CmpItemMenu({ base.Fg }),
     CmpItemKind({ base.Purple }),
     CmpItemKindText({ base.Fg }),
