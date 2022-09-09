@@ -387,6 +387,7 @@ local base_group = lush(function()
     TSPunctBracket({ Grey }), -- For brackets and parens.
     TSPunctSpecial({ Yellow }), -- For special punctutation that does not fall in the catagories before.
     TSRepeat({ Purple }), -- For keywords related to loops.
+    TSStorageClass({ Purple }),
     TSString({ Green }), -- For strings.
     TSStringRegex({ Yellow }), -- For regexes.
     TSStringEscape({ Yellow }), -- For escape characters within a string.
