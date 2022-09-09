@@ -54,11 +54,11 @@ local terminal = {
   ["purple"] = palette.purple,
 }
 if vim.o.background == "dark" then
-  terminal["black"] = palette.bg0
+  terminal["black"] = palette.bg3
   terminal["white"] = palette.fg
 else
   terminal["black"] = palette.fg
-  terminal["white"] = palette.bg0
+  terminal["white"] = palette.bg3
 end
 
 vim.g.terminal_color_0 = terminal.black.hex
