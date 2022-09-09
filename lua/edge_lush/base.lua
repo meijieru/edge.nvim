@@ -309,36 +309,9 @@ local base_group = lush(function()
     LspReferenceText({ diff_group.CurrentWord }), -- used for highlighting "text" references
     LspReferenceRead({ diff_group.CurrentWord }), -- used for highlighting "read" references
     LspReferenceWrite({ diff_group.CurrentWord }), -- used for highlighting "write" references
-    LspCodeLens({ VirtualTextInfo }),
+    LspCodeLens({ VirtualTextInfo }), -- Used to color the virtual text of the codelens
     LspCodeLensSeparator({ VirtualTextHint }),
     LspSignatureActiveParameter({ Search }),
-
-    LspDiagnosticsDefaultError({ ErrorText }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultWarning({ WarningText }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultInformation({ InfoText }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultHint({ HintText }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-
-    LspDiagnosticsVirtualTextError({ VirtualTextError }), -- Used for "Error" diagnostic virtual text
-    LspDiagnosticsVirtualTextWarning({ VirtualTextWarning }), -- Used for "Warning" diagnostic virtual text
-    LspDiagnosticsVirtualTextInformation({ VirtualTextInfo }), -- Used for "Information" diagnostic virtual text
-    LspDiagnosticsVirtualTextHint({ VirtualTextHint }), -- Used for "Hint" diagnostic virtual text
-
-    LspDiagnosticsUnderlineError({ ErrorText }), -- Used to underline "Error" diagnostics
-    LspDiagnosticsUnderlineWarning({ WarningText }), -- Used to underline "Warning" diagnostics
-    LspDiagnosticsUnderlineInformation({ InfoText }), -- Used to underline "Information" diagnostics
-    LspDiagnosticsUnderlineHint({ HintText }), -- Used to underline "Hint" diagnostics
-
-    LspDiagnosticsFloatingError({ ErrorFloat }), -- Used to color "Error" diagnostic messages in diagnostics float
-    LspDiagnosticsFloatingWarning({ WarningFloat }), -- Used to color "Warning" diagnostic messages in diagnostics float
-    LspDiagnosticsFloatingInformation({ InfoFloat }), -- Used to color "Information" diagnostic messages in diagnostics float
-    LspDiagnosticsFloatingHint({ HintFloat }), -- Used to color "Hint" diagnostic messages in diagnostics float
-
-    LspDiagnosticsSignError({ RedSign }), -- Used for "Error" signs in sign column
-    LspDiagnosticsSignWarning({ YellowSign }), -- Used for "Warning" signs in sign column
-    LspDiagnosticsSignInformation({ BlueSign }), -- Used for "Information" signs in sign column
-    LspDiagnosticsSignHint({ GreenSign }), -- Used for "Hint" signs in sign column
-
-    -- LspCodeLens                          { }, -- Used to color the virtual text of the codelens
 
     -- These groups are for the neovim tree-sitter highlights.
     -- As of writing, tree-sitter support is a WIP, group names may change.

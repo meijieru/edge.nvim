@@ -20,6 +20,7 @@ use {
 
 ## Tweaks
 
+- tweak: remove deprecated `LspDiagnostics*`
 - tweak: plugin: stevearc/dressing.nvim
 - tweak: plugin: theHamsta/nvim-dap-virtual-text
 - tweak: plugin: MTDL9/vim-log-highlighting
