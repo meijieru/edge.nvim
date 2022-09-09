@@ -25,7 +25,6 @@ use {
 - tweak: plugin: MTDL9/vim-log-highlighting
 - tweak: plugin: stevearc/aerial.nvim
 - tweak: plugin: simrat39/symbols-outline.nvim
-- tweak: plugin: rcarriga/nvim-dap-ui
 - tweak: plugin: ray-x/lsp_signature.nvim
 - tweak: nvimtree bold opened folder
 - tweak: variable no red
