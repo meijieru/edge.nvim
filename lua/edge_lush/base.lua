@@ -395,7 +395,7 @@ local base_group = lush(function()
     TSTag({ RedItalic }), -- Tags like html tag names.
     TSTagDelimiter({ Purple }), -- Tag delimiter like `<` `>` `/`
     TSText({ Green }), -- For strings considered text in a markup language.
-    TSEmphasis({ gui = "bold" }), -- For text to be represented with emphasis.
+    TSEmphasis({ gui = "italic" }), -- For text to be represented with emphasis.
     TSUnderline({ gui = "underline" }), -- For text to be represented with an underline.
     TSStrike({ Grey }), -- For strikethrough text.
     TSTitle({ Title }), -- Text that is part of a title.
