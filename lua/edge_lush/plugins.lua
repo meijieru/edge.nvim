@@ -1,5 +1,6 @@
 local lush = require("lush")
 local base = require("edge_lush.base")
+local palette = require("edge_lush.palette")
 
 ---@diagnostic disable: undefined-global
 local plugins = lush(function()
@@ -274,7 +275,16 @@ local plugins = lush(function()
     packerTimeHigh({ base.Red }),
     packerTimeMedium({ base.Yellow }),
     packerTimeLow({ base.Green }),
+
+    -- mg979/vim-visual-multi
+    VMCursor({ bg = palette.grey_dim, fg = palette.blue }),
   }
 end)
+
+-- mg979/vim-visual-multi
+vim.g.VM_Mono_hl = "VMCursor"
+vim.g.VM_Extend_hl = "Visual"
+vim.g.VM_Cursor_hl = "VMCursor"
+vim.g.VM_Insert_hl = "VMCursor"
 
 return plugins
