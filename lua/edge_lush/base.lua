@@ -149,6 +149,8 @@ local base_group = lush(function()
     StatusLineTermNC({ bg = palette.bg1, fg = palette.grey }),
     Float({ fg = palette.green }),
 
+    WinBarNC({ Grey }),
+
     WarningFloat({ bg = palette.bg2, fg = palette.yellow }),
     ErrorFloat({ bg = palette.bg2, fg = palette.red }),
     InfoFloat({ bg = palette.bg2, fg = palette.blue }),
