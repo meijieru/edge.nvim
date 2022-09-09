@@ -259,6 +259,7 @@ local base_group = lush(function()
     Number({ fg = palette.green }), --   a number constant: 234, 0xff
     Boolean({ fg = palette.green }), --  a boolean constant: TRUE, false
     FloatingError({ ErrorFloat }), --    a floating point constant: 2.3e10
+    FloatBorder({ bg = palette.bg2, fg = palette.grey }),
 
     Identifier({ fg = palette.cyan }), -- (preferred) any variable name
     Function({ fg = palette.blue }), -- function name (also: methods for classes)
