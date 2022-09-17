@@ -249,10 +249,6 @@ local plugins = lush(function()
     -- MTDL9/vim-log-highlighting
     logBrackets({ base.TSPunctBracket }),
 
-    -- stevearc/dressing.nvim
-    FloatTitle({ base.Normal }),
-    DressingInputText({ base.Normal }),
-
     -- glepnir/dashboard-nvim
     DashboardHeader({ base.Purple }),
     DashboardCenter({ base.Green }),
