@@ -283,7 +283,6 @@ local base_group = lush(function()
 
     Type({ fg = palette.red }), -- (preferred) int, long, char, etc.
     StorageClass({ fg = palette.red }), -- static, register, volatile, etc.
-    Structure({ fg = palette.red }), --  struct, union, enum, etc.
     Typedef({ fg = palette.purple }), --  A typedef
 
     Special({ fg = palette.yellow }), -- (preferred) any special symbol
@@ -429,7 +428,6 @@ if vim.fn.has("nvim-0.8.0") then
       sym("@string")({ base_group.TSString }),
       sym("@string.escape")({ base_group.TSStringEscape }),
       sym("@string.regex")({ base_group.TSStringRegex }),
-      sym("@structure")({ base_group.TSStructure }),
       sym("@symbol")({ base_group.TSSymbol }),
       sym("@tag")({ base_group.TSTag }),
       sym("@tag.delimiter")({ base_group.TSTagDelimiter }),
