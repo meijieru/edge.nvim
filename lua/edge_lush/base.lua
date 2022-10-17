@@ -385,7 +385,67 @@ local base_group = lush(function()
   }
 end)
 
+local ts_group = lush(function()
+  return {}
+end)
+if vim.fn.has("nvim-0.8.0") then
+  ts_group = lush(function(injected_functions)
+    local sym = injected_functions.sym
+    return {
+      sym("@annotation")({ base_group.TSAnnotation }),
+      sym("@attribute")({ base_group.TSAttribute }),
+      sym("@boolean")({ base_group.TSBoolean }),
+      sym("@character")({ base_group.TSCharacter }),
+      sym("@comment")({ base_group.TSComment }),
+      sym("@conditional")({ base_group.TSConditional }),
+      sym("@constant")({ base_group.TSConstant }),
+      sym("@constant.builtin")({ base_group.TSConstBuiltin }),
+      sym("@constant.macro")({ base_group.TSConstMacro }),
+      sym("@constructor")({ base_group.TSConstructor }),
+      sym("@exception")({ base_group.TSException }),
+      sym("@field")({ base_group.TSField }),
+      sym("@float")({ base_group.TSFloat }),
+      sym("@function")({ base_group.TSFunction }),
+      sym("@function.builtin")({ base_group.TSFuncBuiltin }),
+      sym("@function.macro")({ base_group.TSFuncMacro }),
+      sym("@include")({ base_group.TSInclude }),
+      sym("@keyword")({ base_group.TSKeyword }),
+      sym("@keyword.function")({ base_group.TSKeywordFunction }),
+      sym("@keyword.operator")({ base_group.TSKeywordOperator }),
+      sym("@label")({ base_group.TSLabel }),
+      sym("@method")({ base_group.TSMethod }),
+      sym("@namespace")({ base_group.TSNamespace }),
+      sym("@none")({ base_group.TSNone }),
+      sym("@number")({ base_group.TSNumber }),
+      sym("@operator")({ base_group.TSOperator }),
+      sym("@parameter")({ base_group.TSParameter }),
+      sym("@parameter.reference")({ base_group.TSParameterReference }),
+      sym("@property")({ base_group.TSProperty }),
+      sym("@punctuation.bracket")({ base_group.TSPunctBracket }),
+      sym("@punctuation.delimiter")({ base_group.TSPunctDelimiter }),
+      sym("@punctuation.special")({ base_group.TSPunctSpecial }),
+      sym("@repeat")({ base_group.TSRepeat }),
+      sym("@storageclass")({ base_group.TSStorageClass }),
+      sym("@string")({ base_group.TSString }),
+      sym("@string.escape")({ base_group.TSStringEscape }),
+      sym("@string.regex")({ base_group.TSStringRegex }),
+      sym("@structure")({ base_group.TSStructure }),
+      sym("@symbol")({ base_group.TSSymbol }),
+      sym("@tag")({ base_group.TSTag }),
+      sym("@tag.delimiter")({ base_group.TSTagDelimiter }),
+      sym("@text")({ base_group.TSText }),
+      sym("@strike")({ base_group.TSStrike }),
+      sym("@math")({ base_group.TSMath }),
+      sym("@type")({ base_group.TSType }),
+      sym("@type.builtin")({ base_group.TSTypeBuiltin }),
+      sym("@uri")({ base_group.TSURI }),
+      sym("@variable")({ base_group.TSVariable }),
+      sym("@variable.builtin")({ base_group.TSVariableBuiltin }),
+    }
+  end)
+end
+
 -- return our parsed theme for extension or use else where.
-return lush.merge({ base_group, diff_group })
+return lush.merge({ base_group, diff_group, ts_group })
 
 -- vi:nowrap
