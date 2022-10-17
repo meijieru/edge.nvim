@@ -274,6 +274,12 @@ local plugins = lush(function()
 
     -- mg979/vim-visual-multi
     VMCursor({ bg = palette.grey_dim, fg = palette.blue }),
+
+    -- RRethy/vim-illuminate
+    illuminatedWord({ base.CurrentWord }),
+    IlluminatedWordText({ base.CurrentWord }),
+    IlluminatedWordRead({ base.CurrentWord }),
+    IlluminatedWordWrite({ base.CurrentWord }),
   }
 end)
 
