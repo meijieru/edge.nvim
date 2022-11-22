@@ -301,6 +301,16 @@ local base_group = lush(function()
     Error({ fg = palette.red }), -- (preferred) any erroneous construct
     Todo({ gui = "italic", fg = palette.red }), -- (preferred) anything that needs extra attention, mostly the keywords TODO FIXME and XXX
 
+    -- ft: diff
+    diffAdded({ base.Green }),
+    diffRemoved({ base.Red }),
+    diffChanged({ base.Blue }),
+    diffOldFile({ base.Green }),
+    diffNewFile({ base.Cyan }),
+    diffFile({ base.Yellow }),
+    diffLine({ base.Grey }),
+    diffIndexLine({ base.Yellow }),
+
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own. Consult your LSP client's
     -- documentation.
@@ -326,55 +336,71 @@ local base_group = lush(function()
 
     TSMath({ Green }),
     TSStructure({ CyanItalic }),
-    TSKeywordOperator({ Purple }),
     -- }}} docs
 
     TSAnnotation({ Purple }), -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
     TSAttribute({ Yellow }), -- (unstable) TODO: docs
     TSBoolean({ Green }), -- For booleans.
     TSCharacter({ Green }), -- For characters.
+    TSCharacterSpecial({ SpecialChar }),
     TSComment({ Comment }), -- For comment blocks.
     TSConstructor({ Blue }), -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
     TSConditional({ Purple }), -- For keywords related to conditionnals.
     TSConstant({ RedItalic }), -- For constants
     TSConstBuiltin({ CyanItalic }), -- For constant that are built in the language: `nil` in Lua.
     TSConstMacro({ CyanItalic }), -- For constants that are defined by macros: `NULL` in C.
-    -- TSError              { },    -- For syntax/parser errors.
+    TSDebug({ Debug }),
+    TSDefine({ Define }),
+    TSEnvironment({ Macro }),
+    TSEnvironmentName({ Type }),
+    TSError({ Error }), -- For syntax/parser errors.
     TSException({ Purple }), -- For exception related keywords.
-    TSField({ Blue }), -- For fields.
+    TSField({ Cyan }), -- For fields.
     TSFloat({ Green }), -- For floats.
     TSFunction({ Blue }), -- For function (calls and definitions).
+    TSFunctionCall({ Blue }),
     TSFuncBuiltin({ Blue }), -- For builtin functions: `table.insert` in Lua.
     TSFuncMacro({ Blue }), -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
     TSInclude({ Purple }), -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
     TSKeyword({ Purple }), -- For keywords that don't fall in previous categories.
     TSKeywordFunction({ Purple }), -- For keywords used to define a fuction.
+    TSKeywordOperator({ Purple }),
+    TSKeywordReturn({ Purple }),
     TSLabel({ Purple }), -- For labels: `label:` in C and `:label:` in Lua.
     TSMethod({ Blue }), -- For method calls and definitions.
+    TSMethodCall({ Blue }),
     TSNamespace({ Yellow }), -- For identifiers referring to modules and namespaces.
     TSNone({ Fg }), -- TODO: docs
     TSNumber({ Green }), -- For all numbers
     TSOperator({ Purple }), -- For any operator: `+`, but also `->` and `*` in C.
     TSParameter({ RedItalic }), -- For parameters of a function.
     TSParameterReference({ RedItalic }), -- For references to parameters of a function.
-    TSProperty({ Blue }), -- Same as `TSField`.
+    TSPreProc({ PreProc }),
+    TSProperty({ Cyan }), -- Same as `TSField`.
     TSPunctDelimiter({ Grey }), -- For delimiters ie: `.`
     TSPunctBracket({ Grey }), -- For brackets and parens.
     TSPunctSpecial({ Yellow }), -- For special punctutation that does not fall in the catagories before.
     TSRepeat({ Purple }), -- For keywords related to loops.
     TSStorageClass({ Purple }),
+    TSStorageClassLifetime({ Purple }),
     TSString({ Green }), -- For strings.
     TSStringRegex({ Yellow }), -- For regexes.
+    TSStringSpecial({ SpecialChar }),
     TSStringEscape({ Yellow }), -- For escape characters within a string.
     TSSymbol({ Red }), -- For identifiers referring to symbols or atoms.
     TSType({ Yellow }), -- For types.
     TSTypeBuiltin({ YellowItalic }), -- For builtin types.
+    TSTypeDefinition({ Purple }),
+    TSTypeQualifier({ Purple }),
     TSVariable({ Fg }), -- Any variable name that does not have another highlight.
     TSVariableBuiltin({ CyanItalic }), -- Variable names that are defined by the languages, like `this` or `self`.
 
     TSTag({ RedItalic }), -- Tags like html tag names.
+    TSTagAttribute({ Blue }),
     TSTagDelimiter({ Purple }), -- Tag delimiter like `<` `>` `/`
     TSText({ Green }), -- For strings considered text in a markup language.
+    TSTextReference({ Constant }),
+    TSTodo({ Todo }),
     TSEmphasis({ gui = "italic" }), -- For text to be represented with emphasis.
     TSUnderline({ gui = "underline" }), -- For text to be represented with an underline.
     TSStrike({ Grey }), -- For strikethrough text.
@@ -395,47 +421,79 @@ if vim.fn.has("nvim-0.8.0") then
       sym("@attribute")({ base_group.TSAttribute }),
       sym("@boolean")({ base_group.TSBoolean }),
       sym("@character")({ base_group.TSCharacter }),
+      sym("@character.special")({ base_group.TSCharacterSpecial }),
       sym("@comment")({ base_group.TSComment }),
+      sym("@conceal")({ base_group.Grey }),
       sym("@conditional")({ base_group.TSConditional }),
       sym("@constant")({ base_group.TSConstant }),
       sym("@constant.builtin")({ base_group.TSConstBuiltin }),
       sym("@constant.macro")({ base_group.TSConstMacro }),
       sym("@constructor")({ base_group.TSConstructor }),
+      sym("@debug")({ base_group.TSDebug }),
+      sym("@define")({ base_group.TSDefine }),
+      sym("@error")({ base_group.TSError }),
       sym("@exception")({ base_group.TSException }),
       sym("@field")({ base_group.TSField }),
       sym("@float")({ base_group.TSFloat }),
       sym("@function")({ base_group.TSFunction }),
       sym("@function.builtin")({ base_group.TSFuncBuiltin }),
+      sym("@function.call")({ base_group.TSFunctionCall }),
       sym("@function.macro")({ base_group.TSFuncMacro }),
       sym("@include")({ base_group.TSInclude }),
       sym("@keyword")({ base_group.TSKeyword }),
       sym("@keyword.function")({ base_group.TSKeywordFunction }),
       sym("@keyword.operator")({ base_group.TSKeywordOperator }),
+      sym("@keyword.return")({ base_group.TSKeywordReturn }),
       sym("@label")({ base_group.TSLabel }),
+      sym("@math")({ base_group.TSMath }),
       sym("@method")({ base_group.TSMethod }),
+      sym("@method.call")({ base_group.TSMethodCall }),
       sym("@namespace")({ base_group.TSNamespace }),
       sym("@none")({ base_group.TSNone }),
       sym("@number")({ base_group.TSNumber }),
       sym("@operator")({ base_group.TSOperator }),
       sym("@parameter")({ base_group.TSParameter }),
       sym("@parameter.reference")({ base_group.TSParameterReference }),
+      sym("@preproc")({ base_group.TSPreProc }),
       sym("@property")({ base_group.TSProperty }),
       sym("@punctuation.bracket")({ base_group.TSPunctBracket }),
       sym("@punctuation.delimiter")({ base_group.TSPunctDelimiter }),
       sym("@punctuation.special")({ base_group.TSPunctSpecial }),
       sym("@repeat")({ base_group.TSRepeat }),
       sym("@storageclass")({ base_group.TSStorageClass }),
+      sym("@storageclass.lifetime")({ base_group.TSStorageClassLifetime }),
+      sym("@strike")({ base_group.TSStrike }),
       sym("@string")({ base_group.TSString }),
       sym("@string.escape")({ base_group.TSStringEscape }),
       sym("@string.regex")({ base_group.TSStringRegex }),
+      sym("@string.special")({ base_group.TSStringSpecial }),
       sym("@symbol")({ base_group.TSSymbol }),
       sym("@tag")({ base_group.TSTag }),
+      sym("@tag.attribute")({ base_group.TSTagAttribute }),
       sym("@tag.delimiter")({ base_group.TSTagDelimiter }),
       sym("@text")({ base_group.TSText }),
-      sym("@strike")({ base_group.TSStrike }),
-      sym("@math")({ base_group.TSMath }),
+      sym("@text.danger")({ base_group.TSDanger }),
+      sym("@text.diff.add")({ base_group.diffAdded }),
+      sym("@text.diff.delete")({ base_group.diffRemoved }),
+      sym("@text.emphasis")({ base_group.TSEmphasis }),
+      sym("@text.environment")({ base_group.TSEnvironment }),
+      sym("@text.environment.name")({ base_group.TSEnvironmentName }),
+      sym("@text.literal")({ base_group.TSLiteral }),
+      sym("@text.math")({ base_group.TSMath }),
+      sym("@text.note")({ base_group.TSNote }),
+      sym("@text.reference")({ base_group.TSTextReference }),
+      sym("@text.strike")({ base_group.TSStrike }),
+      sym("@text.strong")({ base_group.TSStrong }),
+      sym("@text.title")({ base_group.TSTitle }),
+      sym("@text.todo")({ base_group.TSTodo }),
+      sym("@text.underline")({ base_group.TSUnderline }),
+      sym("@text.uri")({ base_group.TSURI }),
+      sym("@text.warning")({ base_group.TSWarning }),
+      sym("@todo")({ base_group.TSTodo }),
       sym("@type")({ base_group.TSType }),
       sym("@type.builtin")({ base_group.TSTypeBuiltin }),
+      sym("@type.definition")({ base_group.TSTypeDefinition }),
+      sym("@type.qualifier")({ base_group.TSTypeQualifier }),
       sym("@uri")({ base_group.TSURI }),
       sym("@variable")({ base_group.TSVariable }),
       sym("@variable.builtin")({ base_group.TSVariableBuiltin }),

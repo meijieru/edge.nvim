@@ -151,16 +151,6 @@ local plugins = lush(function()
     UndotreeBranch({ base.Cyan }),
     UndotreeSavedSmall({ base.Red }),
 
-    -- ft: diff
-    diffAdded({ base.Green }),
-    diffRemoved({ base.Red }),
-    diffChanged({ base.Blue }),
-    diffOldFile({ base.Green }),
-    diffNewFile({ base.Cyan }),
-    diffFile({ base.Yellow }),
-    diffLine({ base.Grey }),
-    diffIndexLine({ base.Yellow }),
-
     -- TimUntersberger/neogit
     NeogitNotificationInfo({ base.Blue }),
     NeogitNotificationWarning({ base.Yellow }),
