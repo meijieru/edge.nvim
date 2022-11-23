@@ -65,10 +65,10 @@ local plugins = lush(function()
     HopUnmatched({ base.Grey }),
 
     -- lukas-reineke/indent-blankline.nvim
-    IndentBlanklineChar({ base.Conceal }),
-    IndentBlanklineContextChar({ base.Grey }),
-    IndentBlanklineSpaceChar({ base.Conceal }),
-    IndentBlanklineSpaceCharBlankline({ base.Conceal }),
+    IndentBlanklineContextChar({ fg = palette.grey, gui = "nocombine" }),
+    IndentBlanklineChar({ fg = palette.grey_dim, gui = "nocombine" }),
+    IndentBlanklineSpaceChar({ IndentBlanklineChar }),
+    IndentBlanklineSpaceCharBlankline({ IndentBlanklineChar }),
 
     -- lewis6991/gitsigns.nvim
     GitSignsAdd({ base.GreenSign }),
