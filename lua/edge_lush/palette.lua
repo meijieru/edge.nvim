@@ -12,6 +12,7 @@ local palette
 if background == "dark" then
   palette = {
     black = hsl("#202023"),
+    bg_dim = hsl("#24262a"),
     bg0 = hsl("#2c2e34"),
     bg1 = hsl("#33353f"),
     bg2 = hsl("#363944"),
@@ -40,6 +41,7 @@ else
   palette = {
     black = hsl("#dde2e7"),
     fg = hsl("#4b505b"),
+    bg_dim = hsl("#e8ebf0"),
     bg0 = hsl("#fafafa"),
     bg1 = hsl("#eef1f4"),
     bg2 = hsl("#e8ebf0"),
