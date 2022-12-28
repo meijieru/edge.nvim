@@ -228,9 +228,6 @@ local plugins = lush(function()
     NvimDapVirtualTextChanged({ DapUIModifiedValue }),
     -- NvimDapVirtualText({ DapUIVariable }),
 
-    -- simrat39/symbols-outline.nvim
-    FocusedSymbol({ base.Green, gui = "bold" }),
-
     -- stevearc/aerial.nvim
     AerialLine({ base.CursorLine }),
     AerialGuide({ base.LineNr }),

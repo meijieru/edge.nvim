@@ -23,7 +23,6 @@ use {
 - tweak: remove deprecated `LspDiagnostics*`
 - tweak: plugin: theHamsta/nvim-dap-virtual-text
 - tweak: plugin: MTDL9/vim-log-highlighting
-- tweak: plugin: simrat39/symbols-outline.nvim
 - tweak: plugin: ray-x/lsp_signature.nvim
 - tweak: nvimtree bold opened folder
 - tweak: variable no red
