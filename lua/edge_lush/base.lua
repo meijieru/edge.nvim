@@ -390,7 +390,7 @@ local base_group = lush(function()
     TSSymbol({ Red }), -- For identifiers referring to symbols or atoms.
     TSType({ Yellow }), -- For types.
     TSTypeBuiltin({ YellowItalic }), -- For builtin types.
-    TSTypeDefinition({ Purple }),
+    TSTypeDefinition({ Yellow }),
     TSTypeQualifier({ Purple }),
     TSVariable({ Fg }), -- Any variable name that does not have another highlight.
     TSVariableBuiltin({ CyanItalic }), -- Variable names that are defined by the languages, like `this` or `self`.
