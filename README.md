@@ -24,7 +24,6 @@ use {
 - tweak: plugin: theHamsta/nvim-dap-virtual-text
 - tweak: plugin: MTDL9/vim-log-highlighting
 - tweak: plugin: ray-x/lsp_signature.nvim
-- tweak: nvimtree bold opened folder
 - tweak: variable no red
 - tweak: deprecated 256 support
 
